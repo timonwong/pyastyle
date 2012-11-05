@@ -1,0 +1,3 @@
+[submodule "astyle"]
+	path = astyle
+	url = git://github.com/timonwong/astyle-mirror.git
