@@ -3,14 +3,20 @@
 #include <stddef.h>
 
 
-PyObject *PyAStyle_Error;
+static PyObject *PyAStyle_Error;
+
+#if IS_PY3K
+#   define INITERROR return NULL
+#else /* IS_PY3K */
+#   define INITERROR return
+#endif /* IS_PY3K */
 
 static char * STDCALL astyle_mem_alloc(unsigned long size)
 {
     return new char[size];
 }
 
-static inline void astyle_mem_free(void *p)
+static inline void astyle_mem_free(char *p)
 {
     delete[] p;
 }
@@ -52,23 +58,52 @@ PyObject *PyAStyle_Version(PyObject *self, PyObject *args)
 }
 
 // Method table for python script
-static PyMethodDef AStyleMethods[] = {
+static PyMethodDef pyastyle_methods[] = {
     {"format", PyAStyle_Format, METH_VARARGS, NULL},
     {"version", PyAStyle_Version, METH_NOARGS, NULL},
     {NULL, NULL, 0, NULL}
 };
 
-PyMODINIT_FUNC initpyastyle(void)
-{
-    PyObject *m = NULL;
+#if IS_PY3K
+static struct PyModuleDef pyastyle_moduledef = {
+    PyModuleDef_HEAD_INIT,
+    "pyastyle",
+    "Wrapper library for Artistic Style",
+    -1,
+    pyastyle_methods
+};
+#endif /* IS_PY3K */
 
-    m = Py_InitModule("pyastyle", AStyleMethods);
-    if (m == NULL) { // Error on module initialization
-        return;
-    }
+PyMODINIT_FUNC
+#if IS_PY3K
+PyInit_pyastyle(void)
+#else /* IS_PY3K */
+initpyastyle(void)
+#endif /* IS_PY3K */
+{
+    PyObject *module = NULL;
+
+#if IS_PY3K
+    module = PyModule_Create(&pyastyle_moduledef);
+#else /* IS_PY3K */
+    module = Py_InitModule("pyastyle", pyastyle_methods);
+#endif /* IS_PY3K */
+
+    // Error on module initialization
+    if (module == NULL)
+        INITERROR;
 
     // Create an excpetion class for astyle
     PyAStyle_Error = PyErr_NewException("pyastyle.error", NULL, NULL);
+    if (PyAStyle_Error == NULL) {
+        Py_DECREF(module);
+        INITERROR;
+    }
+
     Py_INCREF(PyAStyle_Error);
-    PyModule_AddObject(m, "error", PyAStyle_Error);
+    PyModule_AddObject(module, "error", PyAStyle_Error);
+
+#if IS_PY3K
+    return module;
+#endif /* IS_PY3K */
 }
