@@ -14,7 +14,7 @@ sources.extend(astyle_sources)
 
 module = Extension(
     'pyastyle',
-    define_macros=[('ASTYLE_LIB', None), ('ASTYLE_STATIC', None)],
+    define_macros=[('ASTYLE_LIB', None), ('ASTYLE_STATIC', None), ('ASTYLE_NO_VCX', None)],
     include_dirs=['./astyle/src/'],
     sources=sources,
     extra_compile_args=['/EHsc'] if sys.platform == 'win32' else []
@@ -22,6 +22,6 @@ module = Extension(
 
 setup(
     name='pyastyle',
-    version='1.0',
+    version='1.0.2',
     ext_modules=[module]
 )
