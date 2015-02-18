@@ -22,6 +22,6 @@ module = Extension(
 
 setup(
     name='pyastyle',
-    version='1.0.2',
+    version='1.1.0',
     ext_modules=[module]
 )
