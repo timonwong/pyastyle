@@ -1,5 +1,5 @@
 #include "pyastyle.h"
-#include "astyle.h"
+#include "astyle_main.h"
 #include <stddef.h>
 
 
