@@ -26,10 +26,11 @@ environment:
       WINDOWS_SDK_VERSION: "v7.1"
 
 init:
-  - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
+  - cmd: ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
 
 install:
-  - "powershell ci\\appveyor_install.ps1"
+  - cmd: git submodule update --init --recursive
+  - cmd: powershell ci\\appveyor_install.ps1
 
 build: off
 
