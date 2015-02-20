@@ -42,11 +42,3 @@ after_test:
 
 artifacts:
   - path: dist\*
-
-deploy:
-  provider: S3
-  access_key_id: 
-    secure: gRXt0h8CmVrxiVc9qzvYPwZuwB9LtvImDLLBy11kGZs=
-  secret_access_key:
-    secure: mF5o/o94rjG1Oe05m/L2FlVJX3Otj5PDJ8li6abc2lmu6+8Kv4I/xzmhbckVouTe
-  bucket: pyastyle-binaries
