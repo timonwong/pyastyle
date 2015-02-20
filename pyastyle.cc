@@ -1,5 +1,4 @@
 #include "pyastyle.h"
-#include "astyle_main.h"
 #include <stddef.h>
 
 

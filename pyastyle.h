@@ -1,6 +1,7 @@
 #ifndef __PYASTYLE_H__
 #define __PYASTYLE_H__
 
+#include "astyle_main.h"
 #include <Python.h>
 
 #if PY_MAJOR_VERSION >= 3
