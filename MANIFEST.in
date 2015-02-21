@@ -1,0 +1,6 @@
+include README.md
+include *.h *.cc
+
+graft astyle/build
+graft astyle/doc
+graft astyle/src

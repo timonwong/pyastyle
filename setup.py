@@ -1,11 +1,8 @@
 #!/usr/bin/env python
-import os
 import sys
 
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
-
-__path__ = os.path.dirname(os.path.abspath(__file__))
 
 
 astyle_sources = [
@@ -30,8 +27,8 @@ module = Extension(
     'pyastyle',
     define_macros=[('ASTYLE_LIB', 1), ('ASTYLE_STATIC', 1),
                    ('ASTYLE_NO_EXPORTS', 1)],
-    include_dirs=[__path__, os.path.join(__path__, 'astyle/src')],
-    sources=[os.path.join(__path__, source) for source in sources],
+    include_dirs=['astyle/src'],
+    sources=sources,
     extra_compile_args=extra_compile_args
 )
 

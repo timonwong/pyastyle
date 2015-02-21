@@ -20,8 +20,12 @@ matrix:
     - os: osx
       compiler: gcc
 
+git:
+  submodules: false
+
 before_install:
   - uname -a
+  - git submodule update --init --recursive
 
 install:
   - ./ci/travis_install.sh
