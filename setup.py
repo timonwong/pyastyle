@@ -57,7 +57,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pyastyle",
-    version="1.1.3",
+    version="1.1.4",
 
     description='Python wrapper extension for Artistic Style',
     long_description=long_description,

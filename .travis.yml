@@ -2,6 +2,7 @@
 branches:
   except:
     - gh-pages
+    - /^v\d/
 
 language: c
 
