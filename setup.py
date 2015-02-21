@@ -32,7 +32,7 @@ module = Extension(
                    ('ASTYLE_NO_EXPORTS', 1)],
     include_dirs=['astyle/src'],
     sources=sources,
-    extra_compile_args=extra_compile_args
+    extra_compile_args=extra_compile_args,
 )
 
 
@@ -57,7 +57,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pyastyle",
-    version="1.1.2",
+    version="1.1.3",
 
     description='Python wrapper extension for Artistic Style',
     long_description=long_description,
