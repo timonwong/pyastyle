@@ -1,9 +1,12 @@
 #!/usr/bin/env python
+import os
 import sys
 
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 
+with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
+    long_description = f.read()
 
 astyle_sources = [
     'astyle/src/' + basename + '.cpp'
@@ -54,10 +57,34 @@ class PyTest(TestCommand):
 
 setup(
     name="pyastyle",
-    version="1.1.1",
+    version="1.1.2",
+
+    description='Python wrapper extension for Artistic Style',
+    long_description=long_description,
+
     author="Timon Wong",
     author_email="timon86.wang@gmail.com",
     url="https://github.com/timonwong/pyastyle",
+
+    classifiers=[
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: POSIX",
+        "Operating System :: POSIX :: BSD",
+        "Operating System :: POSIX :: Linux",
+        "Operating System :: Microsoft :: Windows",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: Implementation :: CPython",
+    ],
+
     zip_safe=False,
     ext_modules=[module],
     tests_require=['pytest'],

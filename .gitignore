@@ -1,6 +1,7 @@
 *.py[cod]
 *.so
 
+dist/
 build/
 *.egg/
 *.egg-info/
