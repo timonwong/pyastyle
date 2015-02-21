@@ -1,9 +1,6 @@
 #include "pyastyle.h"
 #include <stddef.h>
 
-
-static PyObject *PyAStyle_Error;
-
 #if IS_PY3K
 #   define INITERROR return NULL
 #else /* IS_PY3K */
@@ -26,7 +23,7 @@ static void STDCALL astyle_error_handler(int error_number, const char *error_mes
     PyErr_Format(PyAStyle_Error, "[%d] %s", error_number, error_message);
 }
 
-PyObject *PyAStyle_Format(PyObject *self, PyObject *args)
+PyObject * PyAStyle_Format(PyObject * /* self */, PyObject *args)
 {
     char *source = NULL;
     char *options = NULL;
@@ -51,7 +48,7 @@ PyObject *PyAStyle_Format(PyObject *self, PyObject *args)
     return result;
 }
 
-PyObject *PyAStyle_Version(PyObject *self, PyObject *args)
+PyObject * PyAStyle_Version(PyObject * /* self */, PyObject * /* args */)
 {
     return Py_BuildValue("s", AStyleGetVersion());
 }
@@ -73,6 +70,14 @@ static struct PyModuleDef pyastyle_moduledef = {
 };
 #endif /* IS_PY3K */
 
+PyObject *PyAStyle_Error;
+static void define_exceptions(PyObject *module)
+{
+    PyAStyle_Error = PyErr_NewException(const_cast<char *>("pyastyle.error"), NULL, NULL);
+    Py_INCREF(PyAStyle_Error);
+    PyModule_AddObject(module, "error", PyAStyle_Error);
+}
+
 PyMODINIT_FUNC
 #if IS_PY3K
 PyInit_pyastyle(void)
@@ -89,18 +94,11 @@ initpyastyle(void)
 #endif /* IS_PY3K */
 
     // Error on module initialization
-    if (module == NULL)
-        INITERROR;
-
-    // Create an excpetion class for astyle
-    PyAStyle_Error = PyErr_NewException("pyastyle.error", NULL, NULL);
-    if (PyAStyle_Error == NULL) {
-        Py_DECREF(module);
+    if (module == NULL) {
         INITERROR;
     }
 
-    Py_INCREF(PyAStyle_Error);
-    PyModule_AddObject(module, "error", PyAStyle_Error);
+    define_exceptions(module);
 
 #if IS_PY3K
     return module;

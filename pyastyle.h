@@ -12,8 +12,11 @@
 extern "C" {
 #endif
 
-PyObject *PyAStyle_Format(PyObject *self, PyObject *args);
-PyObject *PyAStyle_Version(PyObject *self, PyObject *args);
+PyObject * PyAStyle_Format(PyObject *self, PyObject *args);
+PyObject * PyAStyle_Version(PyObject *self, PyObject *args);
+
+// Exceptions
+extern PyObject *PyAStyle_Error;
 
 #ifdef __cplusplus
 }

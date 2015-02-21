@@ -1,12 +1,15 @@
 #!/usr/bin/env python
+import os
 import sys
 
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 
+__path__ = os.path.dirname(os.path.abspath(__file__))
+
 
 astyle_sources = [
-    './astyle/src/' + basename + '.cpp'
+    'astyle/src/' + basename + '.cpp'
     for basename in ('ASBeautifier', 'ASEnhancer', 'ASFormatter', 'ASResource',
                      'astyle_main')
 ]
@@ -27,8 +30,8 @@ module = Extension(
     'pyastyle',
     define_macros=[('ASTYLE_LIB', 1), ('ASTYLE_STATIC', 1),
                    ('ASTYLE_NO_EXPORTS', 1)],
-    include_dirs=['./astyle/src/'],
-    sources=sources,
+    include_dirs=[__path__, os.path.join(__path__, 'astyle/src')],
+    sources=[os.path.join(__path__, source) for source in sources],
     extra_compile_args=extra_compile_args
 )
 
@@ -54,7 +57,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pyastyle",
-    version="1.1.0",
+    version="1.1.1",
     author="Timon Wong",
     author_email="timon86.wang@gmail.com",
     url="https://github.com/timonwong/pyastyle",
