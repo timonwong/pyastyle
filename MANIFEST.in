@@ -1,7 +1,7 @@
 include README.rst
-include *.h *.cc
 include RELEASE-VERSION version.py
 
+recursive-include src *.h *.cc
 graft astyle/build
 graft astyle/doc
 graft astyle/src

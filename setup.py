@@ -16,7 +16,7 @@ astyle_sources = [
                      'astyle_main')
 ]
 
-sources = ['pyastyle.cc']
+sources = ['src/pyastyle.cc']
 sources.extend(astyle_sources)
 
 if sys.platform != 'win32':
