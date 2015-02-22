@@ -8,6 +8,9 @@
 #   define IS_PY3K      1
 #endif
 
+
+#define MOD_PYASTYLE "pyastyle"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
