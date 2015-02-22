@@ -5,6 +5,8 @@ import sys
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 
+import version
+
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
     long_description = f.read()
 
@@ -32,6 +34,7 @@ module = Extension(
                    ('ASTYLE_NO_EXPORTS', 1)],
     include_dirs=['astyle/src'],
     sources=sources,
+    language='c++',
     extra_compile_args=extra_compile_args,
 )
 
@@ -57,7 +60,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pyastyle",
-    version="1.1.4",
+    version=version.get_version(),
 
     description='Python wrapper extension for Artistic Style',
     long_description=long_description,
