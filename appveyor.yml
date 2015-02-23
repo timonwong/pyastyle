@@ -50,7 +50,7 @@ environment:
 
     - PYTHON: "C:\\Python32-x64"
       PYTHON_VERSION: "3.2.5"
-      PYTHON_ARCH: "32"
+      PYTHON_ARCH: "64"
       WINDOWS_SDK_VERSION: "v7.1"
       DISTRIBUTIONS: "bdist_wheel"
 
@@ -91,5 +91,4 @@ deploy:
   draft: true
   prerelease: false
   on:
-    branch: master
     appveyor_repo_tag: true
