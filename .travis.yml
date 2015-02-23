@@ -34,12 +34,12 @@ before_install:
   - git submodule update --init --recursive
 
 install:
-  - ./ci/travis_install.sh
+  - ./.travis/install.sh
 
 script:
-  - ./ci/travis_run.sh
+  - ./.travis/run.sh
 
 notifications:
   email:
     on_success: never
-    on_failure: never
+    on_failure: always
