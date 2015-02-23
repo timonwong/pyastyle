@@ -3,15 +3,7 @@ branches:
   except:
     - gh-pages
 
-# Do not build on tags (GitHub only)
-skip_tags: true
-
 environment:
-  PYPI_USER:
-    secure: WmAbQg/GQXggsqUZLDFO/Q==
-  PYPI_PASS:
-    secure: UQ2swynTNsTmANX4idQtmw==
-
   global:
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -81,5 +73,12 @@ after_test:
 artifacts:
   - path: dist\*
 
-on_success:
-  - "%PYTHON%/Scripts/twine upload -u %PYPI_USER% -p %PYPI_PASS% dist/*"
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: im3lhTE73ST7rwUUhuz0KybfQ6Hr4GEWYDQ1aWmfD3WwRV1uoWdg8xRLNfCrK8X6
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true
