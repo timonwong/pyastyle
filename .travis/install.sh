@@ -26,6 +26,11 @@ if [[ "$DARWIN" = true ]]; then
             curl -O https://bootstrap.pypa.io/get-pip.py
             sudo python get-pip.py
             ;;
+        py32)
+            brew upgrade pyenv
+            pyenv install 3.2.5
+            pyenv global 3.3.5
+            ;;
         py33)
             brew upgrade pyenv
             pyenv install 3.3.6
@@ -47,6 +52,12 @@ else
     case "${TOXENV}" in
         py26)
             sudo apt-get install python2.6 python2.6-dev
+            ;;
+        py27)
+            # Already shipped with ubuntu, skip
+            ;;
+        py32)
+            sudo apt-get install python3.2 python3.2-dev
             ;;
         py33)
             sudo apt-get install python3.3 python3.3-dev

@@ -21,6 +21,11 @@ environment:
       PYTHON_ARCH: "32"
       DISTRIBUTIONS: "sdist bdist_wheel"
 
+    - PYTHON: "C:\\Python32"
+      PYTHON_VERSION: "3.2.5"
+      PYTHON_ARCH: "32"
+      DISTRIBUTIONS: "bdist_wheel"
+
     - PYTHON: "C:\\Python33"
       PYTHON_VERSION: "3.3.3"
       PYTHON_ARCH: "32"
@@ -41,6 +46,12 @@ environment:
       PYTHON_VERSION: "2.7.8"
       PYTHON_ARCH: "64"
       WINDOWS_SDK_VERSION: "v7.0"
+      DISTRIBUTIONS: "bdist_wheel"
+
+    - PYTHON: "C:\\Python32-x64"
+      PYTHON_VERSION: "3.2.5"
+      PYTHON_ARCH: "32"
+      WINDOWS_SDK_VERSION: "v7.1"
       DISTRIBUTIONS: "bdist_wheel"
 
     - PYTHON: "C:\\Python33-x64"
