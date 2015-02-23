@@ -87,6 +87,10 @@ static PyModuleDef pyastyle_moduledef = {
     pyastyle__doc__,
     -1,
     pyastyle_methods,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
 };
 #endif /* IS_PY3K */
 
