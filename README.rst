@@ -18,12 +18,43 @@ Python module for astyle
 This is a python wrapper extension for `Artistic Style`_, a wonderful code formatter & beautifier.
 
 
-Compilation
------------
+Install
+-------
 
-::
+Install with ``pip`` using the command:
 
-    python setup.py build
+.. code-block:: bash
+
+    $ pip install pyastyle
+
+Or by cloning the repo from `GitHub <https://github.com/timonwong/pyastyle>`_:
+
+.. code-block:: bash
+
+    $ git clone git://github.com/timonwong/pyastyle.git
+
+Then install it by running:
+
+.. code-block:: bash
+
+    $ python setup.py install
+
+
+Upgrade
+-------
+
+You can upgrade your crypto version with the command:
+
+.. code-block:: bash
+
+    $ pip install --upgrade crypto
+
+
+API
+---
+
+* ``pyastyle.version()``
+* ``pyastyle.format(code, options)``
 
 
 Credits
