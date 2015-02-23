@@ -80,7 +80,6 @@ function main () {
     InstallPython $env:PYTHON_VERSION $env:PYTHON_ARCH $env:PYTHON
     InstallPip $env:PYTHON
     InstallPackage $env:PYTHON wheel
-    InstallPackage $env:PYTHON twine
 }
 
 main
