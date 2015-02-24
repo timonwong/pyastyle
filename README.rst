@@ -43,11 +43,11 @@ Then install it by running:
 Upgrade
 -------
 
-You can upgrade your crypto version with the command:
+You can upgrade your pyastyle version with the command:
 
 .. code-block:: bash
 
-    $ pip install --upgrade crypto
+    $ pip install --upgrade pyastyle
 
 
 API
