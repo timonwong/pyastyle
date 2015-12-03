@@ -46,11 +46,6 @@ class PyTest(TestCommand):
         TestCommand.initialize_options(self)
         self.pytest_args = []
 
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = []
-        self.test_suite = True
-
     def run_tests(self):
         # import here, cause outside the eggs aren't loaded
         import pytest
