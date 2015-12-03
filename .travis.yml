@@ -11,8 +11,8 @@ os:
   - osx
 
 compiler:
-    - clang
-    - gcc
+  - clang
+  - gcc
 
 env:
   matrix:
@@ -21,6 +21,7 @@ env:
     - TOXENV=py32
     - TOXENV=py33
     - TOXENV=py34
+    - TOXENV=py35
 
 matrix:
   exclude:

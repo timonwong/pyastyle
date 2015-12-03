@@ -41,6 +41,11 @@ if [[ "$DARWIN" = true ]]; then
             pyenv install 3.4.2
             pyenv global 3.4.2
             ;;
+        py35)
+            brew upgrade pyenv
+            pyenv install 3.5.0
+            pyenv global 3.5.0
+            ;;
     esac
 
     pyenv rehash
@@ -64,6 +69,9 @@ else
             ;;
         py34)
             sudo apt-get install python3.4 python3.4-dev
+            ;;
+        py35)
+            sudo apt-get install python3.5 python3.5-dev
             ;;
     esac
 fi
