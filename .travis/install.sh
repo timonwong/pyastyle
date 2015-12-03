@@ -29,17 +29,17 @@ if [[ "$DARWIN" = true ]]; then
         py32)
             brew upgrade pyenv
             pyenv install 3.2.5
-            pyenv global 3.3.5
+            pyenv global 3.2.5
             ;;
         py33)
             brew upgrade pyenv
-            pyenv install 3.3.6
-            pyenv global 3.3.6
+            pyenv install 3.3.5
+            pyenv global 3.3.5
             ;;
         py34)
             brew upgrade pyenv
-            pyenv install 3.4.2
-            pyenv global 3.4.2
+            pyenv install 3.4.3
+            pyenv global 3.4.3
             ;;
         py35)
             brew upgrade pyenv
